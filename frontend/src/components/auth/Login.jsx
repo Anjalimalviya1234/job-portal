@@ -59,7 +59,7 @@ const submitHandler = async(e) =>{
           <h1 className="font-bold text-xl mb-5">Login/<span onClick={() => navigate("/signup")} className="text-blue-600 hover:cursor-pointer hover:underline">signup</span></h1>
           <div className="my-2">
             <Label className="m-1" htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="knlpvvtt@gmail.com" name="email" value={input.email} onChange={changeEventHandler}></Input>
+            <Input id="email" type="email" placeholder="anjali@gmail.com" name="email" value={input.email} onChange={changeEventHandler}></Input>
           </div>
 
           <div className="my-2">
