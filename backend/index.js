@@ -11,17 +11,17 @@ import companyRoute from "./routers/company.router.js";
 import jobsRouter from "./routers/job.router.js";
 import applicationRouter from "./routers/application.router.js";
 import path from "path";
-import { fileURLToPath } from "url";
+
 
 const app = express();
 
 // ✅ __dirname fix for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
+const __dirname = path.resolve();
 
 // ✅ CORS fix (localhost + deployed)
 const corsOptions = {
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin:  "http://localhost:5173",
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -36,7 +36,12 @@ app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobsRouter);
 app.use("/api/v1/application", applicationRouter);
 
+// ✅ Serve frontend build
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+});
 
 const PORT = process.env.PORT || 3000;
 
