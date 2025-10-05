@@ -21,7 +21,7 @@ const __dirname = path.resolve();
 
 // ✅ CORS fix (localhost + deployed)
 const corsOptions = {
-  origin:  "http://localhost:5173",
+  origin:  "https://job-portal-9-u2ls.onrender.com",
   credentials: true,
 };
 app.use(cors(corsOptions));
